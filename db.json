@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "users": [
+          {"id":1, "username":"admin@gmail.com","password":"admin"},
+          {"id":2, "username":"one@gmail.com","password":"one"},
+          {"id":3, "username":"two@gmail.com","password":"two"}
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
