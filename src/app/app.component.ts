@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   constructor(private obj:LoginService)
   {
-
+   
   }
   
   temp:any= {
@@ -24,24 +24,16 @@ export class AppComponent implements OnInit {
   }
  
   ngOnInit(): void {
-     
-   
-
-    this.obj.dosomething().subscribe((item) => {
-    console.log(item);
-    console.log(this.checkUserLoginStatus.username);
-     this.temp = item;
-     if (this.temp.username != "" && this.temp.status == true) {
-      this.checkUserLoginStatus = item; 
-    }
-  });
-
   } 
  
   checkIfLogin()
   {
-   
-    return  this.checkUserLoginStatus;
+    if(localStorage.getItem("islogin")=="true")
+    {
+      this.temp.username = localStorage.getItem("userM");
+      this.temp.status = true;
+    } 
+    return this.temp;
   }
 
 

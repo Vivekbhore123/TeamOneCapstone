@@ -11,7 +11,8 @@ import { MockInterviewComponent } from './mock-interview/mock-interview.componen
  
 const routes: Routes = [
   {path:"login",component:LoginComponent},
-  {path:"dashboard",component:DashboardComponent,canActivate:[LoginService]},
+  // {path:"dashboard",component:DashboardComponent,canActivate:[LoginService]},
+  {path:"dashboard",component:DashboardComponent},
   {path:"register",component:RegisterComponent},
   {path:"logout",component:LoginComponent},
 

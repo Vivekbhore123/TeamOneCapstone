@@ -9,6 +9,8 @@ import { PeriodicElement, UserType, EmpData } from "../models/users.model"
 })
 export class LoginService implements CanActivate {
 
+  logindata$:any=new Subject();
+
   userM: string = "";
   passM: string = "";
   status: boolean = false;
@@ -34,7 +36,7 @@ export class LoginService implements CanActivate {
 
 
   private handleError(errorResponse: HttpErrorResponse) {
-    console.log(errorResponse);
+    // console.log(errorResponse);
 
     if (errorResponse.error instanceof ErrorEvent) {
       console.log(errorResponse.message);
@@ -53,23 +55,31 @@ export class LoginService implements CanActivate {
   //  private isUserLogin:boolean=false;
   
 
-  dosomething() {
+  dosomething(us:string,ps:string) {
 
    
     let subject = new ReplaySubject();
 
-    let username = localStorage.getItem("userM")
-    let password = localStorage.getItem("passM")
+    // let username = localStorage.getItem("userM")
+    let username = us;
+    // let password = localStorage.getItem("passM")
+    let password = ps
     let flag=0;
 
     this._http.get<PeriodicElement[]>(this.userlongURL).subscribe((data) => {
       data.map(item => {
 
-        console.log(item + "from array")
+        // console.log(item + "from array")
         let un = item.username
         let pw = item.password
-        console.log(un + "  " + pw + "  from array")
+        // console.log(un + "  " + pw + "  from array")
         if (username == un && password == pw) {
+
+
+          if(!localStorage.getItem("userM"))
+          localStorage.setItem("userM", username)
+          localStorage.setItem("passM", password)
+         localStorage.setItem("islogin","true")
 
           // alert("details matched")
           flag=1;
@@ -79,6 +89,9 @@ export class LoginService implements CanActivate {
             username: un,
             status: true
           }
+
+          this.logindata$.next(this.temp)
+
         }
       })
 

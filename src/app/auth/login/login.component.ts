@@ -33,27 +33,15 @@ export class LoginComponent implements OnInit {
 
   savePerson(form: NgForm) {
 
-    this.obj.setCredentials(this.username, this.password);
-    this.validateUser()
-
-
-  }
-
-  temp:any= {
-    username: "",
-    status: false
-  }
-
-  validateUser() {
-    // let temp = {}
-    this.obj.dosomething().subscribe((item) => {
+    this.obj.dosomething(this.username, this.password).subscribe((item:any) => {
+      
       console.log(item);
-       this.temp = item;
-       if (this.temp.username != "" && this.temp.status == true) {
+      
+       if (item.username != "" && item.status == true) {
+        
         this.router.navigate(['/dashboard'])
-        setTimeout(()=>{
-          window.location.reload();
-        },1000)
+        
+       
       }
       else {
         alert("wrong credentials")
@@ -62,9 +50,16 @@ export class LoginComponent implements OnInit {
       }
     });
 
-    // console.log(test);
-   
+    
+
   }
+
+  temp:any= {
+    username: "",
+    status: false
+  }
+
+
 
 }
 

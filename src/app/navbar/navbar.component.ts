@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { LoginService } from '../core/services/login.service';
 import { LoginComponent } from '../auth/login/login.component';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
   selector: 'app-navbar',
@@ -17,13 +18,13 @@ export class NavbarComponent implements OnInit {
 
   constructor(private obj:LoginService,private router:Router)
   {
-   
+   console.log(this.checkUserLoginStatus)
   }
   
-  username:string | null = "";
 
   ngOnInit(): void {
 
+  
    
 } 
 

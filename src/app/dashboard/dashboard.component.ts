@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   checkUserLoginStatus:any={};
 
   constructor(private route:Router,private obj:LoginService) { 
-   
+  
 
   }
   temp:any= {
